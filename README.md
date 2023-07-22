@@ -19,7 +19,7 @@ ChainFunds is a groundbreaking solution designed to democratize access to financ
 
 *  Eliminates traditional investment barriers, fostering democratized financial investing
 
-*  Integrates the Bieconomy Protocol, allowing user login via Google Accounts
+*  Integrates the Biconomy Protocol, allowing user login via Google Accounts
 
 *  Features a broad range of funds with comprehensive details, promoting informed investment decisions
 
@@ -32,7 +32,7 @@ ChainFunds is a groundbreaking solution designed to democratize access to financ
 ## Flowchart
 This is how ChainFunds works:
 
-1. You log into ChainFunds using MetaMask or your Google Account, thanks to the integration of Bieconomy Protocol.
+1. You log into ChainFunds using MetaMask or your Google Account, thanks to the integration of Biconomy Protocol.
 
 2. Once in, you have access to an array of funds along with their relevant details. Information such as minimum investment amount, trading rules, and fund manager verification status are all clearly displayed.
 
