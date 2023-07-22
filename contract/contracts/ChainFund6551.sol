@@ -20,7 +20,16 @@ contract ChainFund6551 is IERC165, IERC1271, IERC6551Account{
         uint256 value,
         bytes calldata data
     ) external payable returns (bytes memory result) {
-        revert ChainFund6551NoExecuteCall();
+        require(msg.sender == owner(), "Not token owner");
+
+        bool success;
+        (success, result) = to.call{value: value}(data);
+
+        if (!success) {
+            assembly {
+                revert(add(result, 32), mload(result))
+            }
+        }
     }
 
     function token()
