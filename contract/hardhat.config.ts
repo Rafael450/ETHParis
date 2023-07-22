@@ -22,8 +22,8 @@ const config: HardhatUserConfig = {
     moonbase: {
       url: 'https://rpc.api.moonbase.moonbeam.network',
     },
-    aurora: {
-      url: `https://aurora-testnet.infura.io/v3/${myInfuraId}`,
+    polygon: {
+      url: `https://polygon-mainnet.infura.io/v3/${myInfuraId}`,
       accounts: [myPrivateKey],
     },
     mumbai: {

@@ -90,21 +90,11 @@ contract ChainFund is ERC721, ReentrancyGuard {
     }
 
     function depositERC20(
-        uint256 tokenId,
-        address token,
-        uint256 amount
+        uint256 tokenId
     ) public nonReentrant {
-        if (getAccount(tokenId) == address(0)) revert FundDoesNotExist();
-        uint i = 0;
-        while (fundTokens[tokenId][i] != address(0)) {
-            if (fundTokens[tokenId][i] == token) break;
-            if (fundTokens[tokenId][i+1] == address(0)) revert FundDoesNotAcceptThisERC20();
-            i++;
-        }
-
-        IERC20(token).transferFrom(msg.sender, getAccount(tokenId), amount);
-        
-        deposits[tokenId][msg.sender] += amount;
+        address account = getAccount(tokenId);
+        (bool success, ) = account.call{value: msg.value}("");
+        require(success, "Failed to send MATIC");
 
         emit Deposit(msg.sender, tokenId, token, amount);
     }
