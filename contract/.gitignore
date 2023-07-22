@@ -125,3 +125,7 @@ typechain-types
 cache
 artifacts
 
+out
+.deps
+cache_forge
+
