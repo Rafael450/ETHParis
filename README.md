@@ -3,46 +3,48 @@
 
 ## Overview
 
-ChainFunds is a groundbreaking solution designed to democratize access to financial investing in the crypto world. Unveiled at EthCC 2023, this Web3 project leverages the Polygon network to facilitate the creation and investment in user-generated funds. We foster an inclusive and simplified investment experience while maximizing the benefits of decentralized finance (DeFi).
+ChainFunds is a cutting-edge Web3 project, introduced at EthCC 2023, that seeks to democratize access to financial investing. Leveraging the Gnosis network, ChainFunds allows users to invest in a variety of funds established by other users utilizing XDAI, a stable native coin. Our platform champions simplicity, inclusivity, and ensures transparency, immutability, and decentralized control.
 
 ## Technologies Used
-* Solidity for smart contracts
-* Polygon blockchain for efficient transactions and fund management
-* BYC Protocol for user authentication via Google Accounts
-* World ID Protocol for fund manager verification
-* Airstack Protocol for fund information management
-* ERC6551 for creating NFT-bounded accounts
+* Solidity for crafting smart contracts
+* Gnosis blockchain for executing transactions and fund management
+* QuickNode RPC for deploying our smart contracts on Gnosis Chain
+* MetaMask for user onboarding
+* ERC6551 for creating NFT-bounded accounts and ERC721 for minting the decentralized funds
 
 
 ## Features
-*  Offers an accessible and user-friendly platform for investing in the crypto world
+*  Provides an intuitive and user-friendly platform for engaging with crypto funds
 
-*  Eliminates traditional investment barriers, fostering democratized financial investing
+*  Eliminates conventional investment obstacles, enabling democratized financial investing
 
-*  Integrates the Biconomy Protocol, allowing user login via Google Accounts
+*  Utilizes MetaMask for seamless user interaction with the platform
 
-*  Features a broad range of funds with comprehensive details, promoting informed investment decisions
+*  Showcases a multitude of funds, each with comprehensive details, fostering informed investment decisions
 
-*  Provides secure and transparent fund management using ERC6551 NFT-bounded accounts
+*  Introduces a novel approach to fund management by using ERC6551 NFT-bounded accounts
 
-*  Implements World ID Protocol for verifying fund manager's authenticity, enhancing investor confidence
+*  Enforces trading transparency and security by predetermining and publicly displaying the tokens that a fund manager can tradee
 
-*  Ensures trading transparency and security by predetermining and publicly displaying allowable trade tokens
 
 ## Flowchart
 This is how ChainFunds works:
 
-1. You log into ChainFunds using MetaMask or your Google Account, thanks to the integration of Biconomy Protocol.
+1. Users log into ChainFunds using MetaMask, allowing for simple on-chain transactions via the website.
 
-2. Once in, you have access to an array of funds along with their relevant details. Information such as minimum investment amount, trading rules, and fund manager verification status are all clearly displayed.
+2. The platform showcases a wide array of funds along with their relevant details such as trading rules, minimum investment amounts, % of profits shared with the fund manager, etc.
 
-3. After selecting a fund that suits your investment goals, you make an investment using MATIC. You're now a participant in the fund's returns.
+3. After choosing a suitable fund, users can invest using XDAI. They are then entitled to a share in the fund's returns.
 
-4. You also have the option of becoming a fund creator. Simply click on 'Create Fund', enter the necessary information, and an ERC6551 NFT-bounded account is going to mint a ERC721 NFT for you, representing your new created fund. This account behaves as a digital collection of funds that can trade and hold other tokens, maintaining transparency, immutability, and decentralized control.
+4. Users can also create a fund. By minting a new ERC721 NFT, which behaves as a decentralized fund, they establish an NFT-bounded account using the ERC6551 standard. This account acts as a digital fund that can trade and hold other tokens, such as ERC20, while retaining transparency, immutability, and decentralized control.
 
-5. As a fund manager, you trade within the predetermined and publicly displayed token set (ERC20 int this case). This assures investors of the fund's security and transparency.
+5. The tokens that a fund manager can trade are predetermined and publicly displayed, assuring investors of the fund's security and transparency.
 
-6. You can track and manage all your investments and fund operations, which is possible with Airstack Protocol helps, that gives us effectively access to critical informations about each fund.
+6. ChainFunds values ease of access to information about the funds, ensuring transparency and a positive user experience.
+
+7. You can allways track and manage all your investments and fund operations using the platform!
+
+8. Here isa FlowChart about how the main idea works for inverstors and managers:
 
 ![FlowChart](https://github.com/Rafael450/ETHParis/assets/101767386/b0a16ec4-9f08-451a-bc05-46049489d686)
 
@@ -74,13 +76,13 @@ This is how ChainFunds works:
 
 ## Usage
 ### User Interface
-1. As a ChainFunds user, you have the freedom to invest in various funds or create your own. To invest, simply select a fund, review its details, and invest using MATIC.
+1. As a ChainFunds user, you have the flexibility to invest in a wide variety of funds or even establish your own. To invest, simply select a fund, review its details, and invest using XDAI.
 
-2. To create a fund, navigate to 'Create Fund', enter the required details, and an ERC6551 NFT-bounded account automatically generates a new fund for you. You now manage a digital fund that can trade and hold other tokens.
+2. To create a fund, navigate to 'Create Fund', fill in the required details, and an ERC6551 NFT-bounded account automatically generates a new fund for you. You are now managing a digital fund that can trade and hold other tokens.
 
-3. To enhance transparency and security, the tokens that a fund manager can trade are predetermined and publicly displayed. This feature allows investors to understand the fund's operation and safeguards against potential scams.
+3. For the sake of transparency and security, the tokens that a fund manager can trade are predetermined and publicly displayed. This feature empowers investors with a clear understanding of the fund's operation and safeguards against potential scams.
 
-4. ChainFunds provides a seamless user experience, further enhanced by the Airstack Protocol. It allows users to easily access and manage information about their funds, making the platform more user-friendly and transparent.
+4. ChainFunds is committed to providing a seamless user experience. Our platform allows users to easily access and manage information about their funds, making the platform more user-friendly and transparent.
 
 
 ## Team:
