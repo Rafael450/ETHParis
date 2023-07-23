@@ -27,7 +27,7 @@ export const useSessionStore = defineStore('session', () => {
 
             loading.value = false;
 
-            router.replace('/dashboard');
+            router.replace('/dashboard/create-fund');
         },
     };
 });

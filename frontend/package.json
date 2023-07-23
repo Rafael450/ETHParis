@@ -13,11 +13,13 @@
     "@fontsource/montserrat": "^5.0.5",
     "@pushprotocol/restapi": "^1.4.3",
     "@quasar/extras": "^1.0.0",
+    "@worldcoin/idkit": "^0.5.1",
     "axios": "^0.21.1",
     "ethers": "^5.6.2",
     "graphql": "^16.7.1",
     "pinia": "^2.0.11",
     "quasar": "^2.6.0",
+    "veaury": "^2.3.12",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0"
   },

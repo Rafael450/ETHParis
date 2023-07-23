@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import FundCard from 'components/fund-card.vue';
-
-
+import { watchEffect } from 'vue';
 
 </script>
 

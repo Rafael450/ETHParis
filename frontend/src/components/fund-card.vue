@@ -29,7 +29,7 @@ async function invest(value: number) {
 
 
     const contract = new ethers.Contract(
-        '0x037f6a573aC359F32A132336eED30bA39c9405dB',
+        '0xf8288E2e1Bdd20D418021d77Fb14Ef45cCe652be',
         [
             'function deposit(uint256 tokenId) public payable',
         ],
@@ -69,13 +69,16 @@ async function invest(value: number) {
             <div><span class="text-weight-bold">Owner's address</span>: 0x8c245bE862E6D5e9c44c7c31D0d5340c8Aa03e44</div>
         </q-card-section>
         <q-card-section class="text-subtitle2">
-            <div><span class="text-weight-bold">Minimal aport</span>:0.01ETH</div>
+            <div><span class="text-weight-bold">Minimal aport</span>: 0.01xDAI</div>
         </q-card-section>
         <q-card-section class="text-subtitle2">
-            <div><span class="text-weight-bold">Holding tokens</span>:USDC, MATIC</div>
+            <div><span class="text-weight-bold">Holding tokens</span>: USDT, xDAI</div>
         </q-card-section>
         <q-card-section class="text-subtitle2">
-            <div><span class="text-weight-bold">Burning time</span>:6 days</div>
+            <div><span class="text-weight-bold">Burning time</span>: 6 days</div>
+        </q-card-section>
+        <q-card-section class="text-subtitle2">
+            <div><span class="text-weight-bold">Managent tax</span>: 5% of profits</div>
         </q-card-section>
         <q-card-actions
             align="evenly"

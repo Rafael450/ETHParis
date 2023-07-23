@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
-import { mdiWalletOutline, mdiChevronDoubleRight, mdiFinance } from '@quasar/extras/mdi-v5';
+import { mdiWalletOutline, mdiChevronDoubleRight, mdiFinance, mdiChartLine } from '@quasar/extras/mdi-v5';
 import logo from  'assets/top-logo.png';
 
 const $q = useQuasar();
@@ -95,7 +95,7 @@ const leftDrawerOpen = ref(true);
                 >
                     <q-item-section avatar>
                         <q-icon
-                            :name="mdiFinance"
+                            :name="mdiChartLine"
                             color="accent"
                         />
                     </q-item-section>

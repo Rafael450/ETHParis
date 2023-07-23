@@ -3,6 +3,7 @@ import { ethers } from 'ethers';
 import { ref } from 'vue';
 import { useQuasar } from 'quasar';
 
+
 const $q = useQuasar();
 
 const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -11,12 +12,14 @@ const name = ref('');
 
 const minInvestment = ref('');
 
+const managementFee = ref('');
+
 const token1 = ref('Choose token you will be able to trade');
 
 const token2 = ref('Choose token you will be able to trade');
 
 const options = [
-    'USDC', 'MATIC',
+    'USDT', 'xDAI',
 ];
 
 const loading = ref(false);
@@ -28,7 +31,7 @@ async function create() {
     console.log(signer);
 
     const contract = new ethers.Contract(
-        '0x037f6a573aC359F32A132336eED30bA39c9405dB',
+        '0xf8288E2e1Bdd20D418021d77Fb14Ef45cCe652be',
         [
             'function mint(address to, address[] memory funds) public',
         ],
@@ -39,7 +42,7 @@ async function create() {
     const mint = await contract.mint(
         address,
         [
-            '0x037f6a573aC359F32A132336eED30bA39c9405dB',
+            '0x4ECaBa5870353805a9F068101A40E0f32ed605C6',
             '0x037f6a573aC359F32A132336eED30bA39c9405dB',
         ]
     );
@@ -74,10 +77,18 @@ async function create() {
             class="q-mb-lg"
         />
         <q-input
-            v-model="name"
+            v-model="minInvestment"
             autofocus
             color="accent"
-            label="Mininum investment"
+            label="Mininum investment(xDAI)"
+            style="width: 30%;"
+            class="q-mb-lg"
+        />
+        <q-input
+            v-model="managementFee"
+            autofocus
+            color="accent"
+            label="Management fee(%)"
             style="width: 30%;"
             class="q-mb-lg"
         />
