@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import logo from  'assets/top-logo.png';
-import { Todo, Meta } from 'components/models';
-import ExampleComponent from 'components/ExampleComponent.vue';
-import { ref } from 'vue';
+import { useSessionStore } from 'src/stores/session';
+
+const session = useSessionStore();
+
 
 </script>
 
@@ -29,7 +30,7 @@ import { ref } from 'vue';
             no-caps
             rounded
             class="text-h6 q-ma-lg q-py-md"
-            @click="()=>{}"
+            @click="session.connect"
         />
     </q-page>
 </template>

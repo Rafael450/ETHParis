@@ -10,13 +10,14 @@ $q.dark.set(true);
 
 const leftDrawerOpen = ref(true);
 
+
+
 </script>
 
 <template>
     <q-layout view="lHh lpR lFf">
         <q-drawer
             v-model="leftDrawerOpen"
-            show-if-above
             side="left"
             bordered
         >
@@ -64,6 +65,7 @@ const leftDrawerOpen = ref(true);
                     exact
                     dark
                     active-class="selected"
+                    class="q-mb-md"
                 >
                     <q-item-section avatar>
                         <q-icon
@@ -74,6 +76,32 @@ const leftDrawerOpen = ref(true);
 
                     <q-item-section class="text-weight-bold">
                         Investment funds
+                    </q-item-section>
+
+                    <q-item-section avatar>
+                        <q-icon
+                            :name="mdiChevronDoubleRight"
+                            color="accent"
+                        />
+                    </q-item-section>
+                </q-item>
+                <q-item
+                    v-ripple
+                    clickable
+                    to="/dashboard/create-fund"
+                    exact
+                    dark
+                    active-class="selected"
+                >
+                    <q-item-section avatar>
+                        <q-icon
+                            :name="mdiFinance"
+                            color="accent"
+                        />
+                    </q-item-section>
+
+                    <q-item-section class="text-weight-bold">
+                        Create fund
                     </q-item-section>
 
                     <q-item-section avatar>
