@@ -7,13 +7,20 @@ import "openzeppelin-contracts/security/ReentrancyGuard.sol";
 import "reference/src/ERC6551Registry.sol";
 import "reference/src/interfaces/IERC6551Account.sol";
 import "v3-periphery/interfaces/ISwapRouter.sol";
+import "world-id-starter/interfaces/IWorldID.sol";
+import "./WorldIdImplementation.sol";
+
 
 
 error FundDoesNotExist();
 error FundDoesNotAcceptThisERC20();
 
 
-contract ChainFund is ERC721, ReentrancyGuard {
+contract ChainFund is 
+    ERC721, 
+    ReentrancyGuard,
+    WorldIdImplementation
+{
     IERC6551Registry public erc6551Registry;
     ISwapRouter public swapRouter;
     address public implementation;
@@ -28,6 +35,9 @@ contract ChainFund is ERC721, ReentrancyGuard {
     // NFT ID => ERC20 index => ERC20 token address
     mapping(uint256 => mapping(uint => address)) public fundTokens;
 
+    mapping(address => bool) public verifiedUsers;
+
+
 
     event NewFund(
         address indexed to,
@@ -37,7 +47,6 @@ contract ChainFund is ERC721, ReentrancyGuard {
     event Deposit(
         address indexed from,
         uint256 indexed tokenId,
-        address indexed token,
         uint256 amount
     );
     
@@ -45,8 +54,11 @@ contract ChainFund is ERC721, ReentrancyGuard {
     constructor(
         address _erc6551Registry,
         address _implementation,
-        address _swapRouter
-    ) ERC721("MyNFT", "MNFT") {
+        address _swapRouter,
+        IWorldID _worldId,
+        string memory _appId,
+        string memory _action
+    ) ERC721("MyNFT", "MNFT") WorldIdImplementation(_worldId, _appId, _action) {
         erc6551Registry = IERC6551Registry(_erc6551Registry);
         implementation = _implementation;
         swapRouter = ISwapRouter(_swapRouter);
@@ -54,8 +66,7 @@ contract ChainFund is ERC721, ReentrancyGuard {
     
     function mint(
         address to,
-        address[] memory funds,
-        bytes memory initData
+        address[] memory funds
     ) public {
         _safeMint(to, tokens);
 
@@ -66,7 +77,7 @@ contract ChainFund is ERC721, ReentrancyGuard {
             address(this),
             tokens,
             0,
-            initData
+            bytes("")
         );
 
         for(uint i = 0; i < funds.length; i++) {
@@ -89,14 +100,14 @@ contract ChainFund is ERC721, ReentrancyGuard {
             );
     }
 
-    function depositERC20(
+    function deposit(
         uint256 tokenId
-    ) public nonReentrant {
+    ) public payable nonReentrant {
         address account = getAccount(tokenId);
         (bool success, ) = account.call{value: msg.value}("");
         require(success, "Failed to send MATIC");
 
-        emit Deposit(msg.sender, tokenId, token, amount);
+        emit Deposit(msg.sender, tokenId, msg.value);
     }
 
     function swapExactInputSingle(
@@ -154,12 +165,22 @@ contract ChainFund is ERC721, ReentrancyGuard {
     }
 
 
-    function isTokenAllowed(uint256 tokenId, address token) private returns(bool) {
+    function isTokenAllowed(uint256 tokenId, address token) private view returns(bool) {
         uint i = 0;
         while (fundTokens[tokenId][i] != address(0)) {
             if (fundTokens[tokenId][i] == token) return true;
             i++;
         }
         return false;
+    }
+
+    function verifyAndExecute(
+        address signal,
+        uint256 root,
+        uint256 nullifierHash,
+        uint256[8] calldata proof
+    ) public override {
+        super.verifyAndExecute(signal, root, nullifierHash, proof);
+        verifiedUsers[signal] = true;
     }
 }
