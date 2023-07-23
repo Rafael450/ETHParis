@@ -20,32 +20,9 @@ const config: HardhatUserConfig = {
     },
   },
   networks: {
-    moonbase: {
-      url: 'https://rpc.api.moonbase.moonbeam.network',
-    },
-    neon: {
-      url: `https://devnet.neonevm.org`,
+    gnosis: {
+      url: `https://clean-practical-log.xdai.discover.quiknode.pro/${myQuicknodeId}`,
       accounts: [myPrivateKey],
-    },
-    mumbai: {
-      url: `https://polygon-mumbai.infura.io/v3/${myInfuraId}`,
-      accounts: [myPrivateKey],
-    },
-    sepolia: {
-      url: `https://sepolia.infura.io/v3/${myInfuraId}`,
-      accounts: [myPrivateKey],
-    },
-    moonbeam: {
-      url: 'https://rpc.api.moonbeam.network',
-    },
-    kovan: {
-      url: `https://kovan.infura.io/v3/${process.env.DEPLOY_INFURA_KEY}`
-    },
-    mainnet: {
-      url: `https://mainnet.infura.io/v3/${process.env.DEPLOY_INFURA_KEY}`
-    },
-    ropsten: {
-      url: `https://ropsten.infura.io/v3/${process.env.DEPLOY_INFURA_KEY}`
     }
   },
   paths: {
