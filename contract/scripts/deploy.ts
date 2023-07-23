@@ -23,10 +23,7 @@ async function main() {
     const chainFund721 = await ChainFund721.deploy(
         eRC6551Registry.target, 
         chainFund6551.target, 
-        "0xE592427A0AEce92De3Edee1F18E0157C05861564",
-        "0x8d6308aC8d34088587Ef345736389Ee915e2A9dA",
-        "app_staging_2add08497ffb3b8df5c5577148d7b97e",
-        "verify-on-chain");
+        "0xE592427A0AEce92De3Edee1F18E0157C05861564");
   
     await chainFund721.waitForDeployment();
     console.log("ERC721 address:", chainFund721.target);

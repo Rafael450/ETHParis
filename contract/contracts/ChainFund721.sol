@@ -7,16 +7,13 @@ import "openzeppelin-contracts/security/ReentrancyGuard.sol";
 import "reference/src/ERC6551Registry.sol";
 import "reference/src/interfaces/IERC6551Account.sol";
 import "v3-periphery/interfaces/ISwapRouter.sol";
-import "world-id-starter/interfaces/IWorldID.sol";
-import "./WorldIdImplementation.sol";
 
 error FundDoesNotExist();
 error FundDoesNotAcceptThisERC20();
 
 contract ChainFund is 
     ERC721, 
-    ReentrancyGuard,
-    WorldIdImplementation
+    ReentrancyGuard
 {
     IERC6551Registry public erc6551Registry;
     ISwapRouter public swapRouter;
@@ -52,11 +49,8 @@ contract ChainFund is
     constructor(
         address _erc6551Registry,
         address _implementation,
-        address _swapRouter,
-        IWorldID _worldId,
-        string memory _appId,
-        string memory _action
-    ) ERC721("MyNFT", "MNFT") WorldIdImplementation(_worldId, _appId, _action) {
+        address _swapRouter
+    ) ERC721("MyNFT", "MNFT") {
         erc6551Registry = IERC6551Registry(_erc6551Registry);
         implementation = _implementation;
         swapRouter = ISwapRouter(_swapRouter);
@@ -189,15 +183,5 @@ contract ChainFund is
             i++;
         }
         return false;
-    }
-
-    function verifyAndExecute(
-        address signal,
-        uint256 root,
-        uint256 nullifierHash,
-        uint256[8] calldata proof
-    ) public override {
-        super.verifyAndExecute(signal, root, nullifierHash, proof);
-        verifiedUsers[signal] = true;
     }
 }

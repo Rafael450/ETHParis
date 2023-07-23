@@ -23,8 +23,8 @@ const config: HardhatUserConfig = {
     moonbase: {
       url: 'https://rpc.api.moonbase.moonbeam.network',
     },
-    polygon: {
-      url: `https://attentive-winter-frog.matic.discover.quiknode.pro/${myQuicknodeId}`,
+    neon: {
+      url: `https://devnet.neonevm.org`,
       accounts: [myPrivateKey],
     },
     mumbai: {
