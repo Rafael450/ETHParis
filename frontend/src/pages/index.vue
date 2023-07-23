@@ -16,14 +16,6 @@ const session = useSessionStore();
             class="q-my-md"
         />
         <q-btn
-            style="background: #008d6e; color: white; width: 350px;"
-            label="Login with Google"
-            no-caps
-            rounded
-            class="text-h6 q-ma-lg q-py-md"
-            @click="()=>{}"
-        />
-        <q-btn
             outline
             style="color: #008d6e; width: 350px;"
             label="Login with metamask"

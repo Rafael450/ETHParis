@@ -29,7 +29,7 @@ async function invest(value: number) {
 
 
     const contract = new ethers.Contract(
-        '0xf8288E2e1Bdd20D418021d77Fb14Ef45cCe652be',
+        '0xE3b8413838D37b17be11F48bdf981FDb51ADc3bC',
         [
             'function deposit(uint256 tokenId) public payable',
         ],
