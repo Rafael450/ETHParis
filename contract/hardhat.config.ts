@@ -6,6 +6,7 @@ import "@nomicfoundation/hardhat-foundry";
 dotenv.config({ path: __dirname+'/.env' });
 const myPrivateKey: string = process.env.PRIVATE_KEY as string;
 const myInfuraId: string = process.env.DEPLOY_INFURA_KEY as string;
+const myQuicknodeId: string = process.env.DEPLOY_QUICKNODE_KEY as string;
 
 
 const config: HardhatUserConfig = {
@@ -23,7 +24,7 @@ const config: HardhatUserConfig = {
       url: 'https://rpc.api.moonbase.moonbeam.network',
     },
     polygon: {
-      url: `https://polygon-mainnet.infura.io/v3/${myInfuraId}`,
+      url: `https://attentive-winter-frog.matic.discover.quiknode.pro/${myQuicknodeId}`,
       accounts: [myPrivateKey],
     },
     mumbai: {

@@ -37,8 +37,6 @@ contract ChainFund is
 
     mapping(address => bool) public verifiedUsers;
 
-
-
     event NewFund(
         address indexed to,
         uint256 indexed tokenId
@@ -110,12 +108,29 @@ contract ChainFund is
         emit Deposit(msg.sender, tokenId, msg.value);
     }
 
+    function approveToken(uint256 tokenId, address token, address spender, uint256 amount) internal {
+        require(msg.sender == ownerOf(tokenId), "Not token owner");
+        bytes memory data = abi.encodeWithSignature("approve(address,uint256)", spender, amount);
+        
+        // get the address of the ERC6551 account
+        address account = getAccount(tokenId);
+        IERC6551Account erc6551Account = IERC6551Account(payable(account));
+
+        // call the approve function on the ERC20 token from the ERC6551 account
+        bytes memory result = erc6551Account.executeCall(address(token), 0, data);
+
+        // optionally you can check the result to ensure the approve call was successful
+        (bool success,) = abi.decode(result, (bool, bytes));
+        require(success, "Approval failed");
+    }
+
     function swapExactInputSingle(
+        uint256 tokenId,
         uint256 amountIn,
         address tokenIn,
         address tokenOut
     ) external returns (uint256 amountOut) {
-        IERC20(tokenIn).approve(address(swapRouter), amountIn);
+        approveToken(tokenId, tokenIn, address(swapRouter), amountIn);
 
         ISwapRouter.ExactInputSingleParams memory params = ISwapRouter
             .ExactInputSingleParams({

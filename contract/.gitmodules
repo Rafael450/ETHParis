@@ -1,0 +1,12 @@
+[submodule "contract/lib/reference"]
+	path = contract/lib/reference
+	url = https://github.com/erc6551/reference
+[submodule "contract/lib/openzeppelin-contracts"]
+	path = contract/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "contract/lib/v3-periphery"]
+	path = contract/lib/v3-periphery
+	url = https://github.com/Uniswap/v3-periphery
+[submodule "contract/lib/world-id-starter"]
+	path = contract/lib/world-id-starter
+	url = https://github.com/worldcoin/world-id-starter
