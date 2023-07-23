@@ -10,11 +10,8 @@ import "v3-periphery/interfaces/ISwapRouter.sol";
 import "world-id-starter/interfaces/IWorldID.sol";
 import "./WorldIdImplementation.sol";
 
-
-
 error FundDoesNotExist();
 error FundDoesNotAcceptThisERC20();
-
 
 contract ChainFund is 
     ERC721, 
@@ -31,6 +28,9 @@ contract ChainFund is
 
     // NFT ID => depositor => amount
     mapping(uint256 => mapping(address => uint256)) public deposits;
+
+    mapping(uint256 => uint256) public totalDeposits;
+
 
     // NFT ID => ERC20 index => ERC20 token address
     mapping(uint256 => mapping(uint => address)) public fundTokens;
@@ -103,6 +103,8 @@ contract ChainFund is
     ) public payable nonReentrant {
         address account = getAccount(tokenId);
         (bool success, ) = account.call{value: msg.value}("");
+        totalDeposits[tokenId] += msg.value;
+        deposits[tokenId][msg.sender] += msg.value;
         require(success, "Failed to send MATIC");
 
         emit Deposit(msg.sender, tokenId, msg.value);
